@@ -6,13 +6,13 @@
     "author": "Millzy, Raine",
     "version": "0.1.0",
     "packageId": "com.beatgames.beatsaber",
-    "packageVersion": "1.16.4",
-    "description": "#{description}",
+    "packageVersion": "1.17.1",
+    "description": "Set requirements in order for scores to be submitted",
     "modFiles": [
         "libScoreRequirement.so"
     ],
     "libraryFiles": [
-        "libbeatsaber-hook_2_2_5.so",
-        "libquestui.so"
+        "libbeatsaber-hook_2_3_2.so",
+        "libbs-utils.so"
     ]
 }

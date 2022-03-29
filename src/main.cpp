@@ -3,12 +3,16 @@
 #include "UI/SRSettingsViewController.hpp"
 using namespace ScoreRequirement::UI;
 
+#include "SRHooks.hpp"
+using namespace ScoreRequirement;
+
 #include "questui/shared/QuestUI.hpp"
 #include "custom-types/shared/register.hpp"
 
 #include "Config/ModConfig.hpp"
 
-static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
+#include "GlobalNamespace/GameCoreSceneSetup.hpp"
+using namespace GlobalNamespace;
 
 // Loads the config from disk using our modInfo, then returns it for use
 Configuration& getConfig() {
@@ -44,9 +48,9 @@ extern "C" void load() {
     custom_types::Register::AutoRegister();
 
     QuestUI::Init();
-    QuestUI::Register::RegisterModSettingsViewController<SRSettingsViewController*>(modInfo);
+    QuestUI::Register::RegisterGameplaySetupMenu<SRSettingsViewController*>(modInfo);
 
     getLogger().info("Installing hooks...");
-    // Install our hooks (none defined yet)
+    Hooks::InstallHooks(getLogger());
     getLogger().info("Installed all hooks!");
 }
